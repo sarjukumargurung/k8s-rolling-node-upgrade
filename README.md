@@ -1,6 +1,41 @@
 # Rolling Kubernetes node upgrades (drain / uncordon)
 
-Automation around the kubeadm worker flow:
+**Architecture / Rollout**
+
+**Rolling Node Upgrade Pipeline**
+
+<img width="1168" height="784" alt="image" src="https://github.com/user-attachments/assets/46ce6da1-b6e0-4854-b63b-48344088ad32" />
+
+**Rolling Workder Upgrade Architecture**
+
+<img width="1168" height="784" alt="image" src="https://github.com/user-attachments/assets/3f8c5a1f-2406-405e-a727-cd740464e305" />
+
+**Layout**
+```
+k8s-rolling-node-upgrade/
+├── README.md
+├── Makefile
+├── .gitignore
+├── config/
+│   └── upgrade.env.example
+├── lib/
+│   └── common.sh
+├── manifests/
+│   └── pdb/
+│       ├── frontend-pdb.yaml
+│       ├── api-pdb.yaml
+│       └── database-pdb.yaml
+├── scripts/
+│   ├── preflight.sh
+│   ├── drain-node.sh
+│   ├── upgrade-node-remote.sh
+│   ├── healthcheck.sh
+│   └── rolling-upgrade.sh
+└── examples/
+    └── run-local.sh
+```
+
+**Automation around the kubeadm worker flow:**
 
 1. preflight (skew, capacity, PDBs)
 2. cordon + drain (no --force)
@@ -44,12 +79,10 @@ Scale to >1 replica, confirm the PVC can attach on another node, drain followers
 and use a longer DRAIN_TIMEOUT / GRACE_PERIOD.
 
 ```bash
-
 ---
 
 ## How to run
 
-```bash
 git init k8s-rolling-node-upgrade && cd k8s-rolling-node-upgrade
 # drop the files above in place
 chmod +x scripts/*.sh examples/run-local.sh
