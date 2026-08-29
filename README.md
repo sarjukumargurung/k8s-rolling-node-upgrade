@@ -46,6 +46,8 @@ k8s-rolling-node-upgrade/
 
 Control plane must already be on the target minor (or newer). This tool only rolls workers.
 
+Use this on **self-managed kubeadm** clusters. On **EKS/GKE/AKS**, prefer the provider rolling node-pool upgrade instead of SSH + apt-get.
+
 ## Usage
 
 ```bash
