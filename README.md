@@ -1,4 +1,4 @@
-# Rolling Kubernetes node upgrades (drain / uncordon)
+# Kubernetes Cluster Node Upgrade Automation Workflow / Pipeline
 
 **Architecture / Rollout**
 
@@ -6,7 +6,7 @@
 
 <img width="1168" height="784" alt="image" src="https://github.com/user-attachments/assets/46ce6da1-b6e0-4854-b63b-48344088ad32" />
 
-**Rolling Workder Upgrade Architecture**
+**Rolling Worker Upgrade Architecture**
 
 <img width="1168" height="784" alt="image" src="https://github.com/user-attachments/assets/3f8c5a1f-2406-405e-a727-cd740464e305" />
 
