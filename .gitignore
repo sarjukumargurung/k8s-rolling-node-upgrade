@@ -1,0 +1,4 @@
+config/upgrade.env
+logs/
+*.log
+.DS_Store
